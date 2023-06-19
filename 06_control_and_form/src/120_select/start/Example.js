@@ -1,10 +1,19 @@
+import { useState } from 'react';
+
+const OPTOINS = ['apple', 'banana', 'cherry'];
 const Example = () => {
+  const [selected, setSelected] = useState('banana');
   return (
-    <p style={{ textAlign: "center" }}>
-      startフォルダの内容が表示されます。
-      <br />
-      練習用に使ってください！
-    </p>
+    <>
+      <select value={selected} onChange={(e) => setSelected(e.target.value)}>
+        {OPTOINS.map((o) => (
+          <option key={o} value={o}>
+            {o}
+          </option>
+        ))}
+      </select>
+      <div>選択された果物は：{selected}</div>
+    </>
   );
 };
 

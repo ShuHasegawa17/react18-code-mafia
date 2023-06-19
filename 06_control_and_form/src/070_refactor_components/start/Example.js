@@ -11,7 +11,6 @@ const Example = () => {
     const isMatch = animal.indexOf(filterVal) !== -1;
     return isMatch;
   });
-
   return (
     <>
       <AnimalFilter filterState={[filterVal, setFilterVal]} />
