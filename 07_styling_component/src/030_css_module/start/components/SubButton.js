@@ -1,6 +1,10 @@
-import "./SubButton.css";
+import styles from './SubButton.module.css';
 
 const SubButton = () => {
-    return <button className="btn">サブボタン</button>
-}
+  return (
+    <button id={styles.idAttr} className={styles.btn}>
+      サブボタン
+    </button>
+  );
+};
 export default SubButton;
