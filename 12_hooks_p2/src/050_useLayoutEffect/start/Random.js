@@ -1,9 +1,9 @@
-import { useLayoutEffect, useEffect, useState, useRef } from "react";
+import { useLayoutEffect, useState } from 'react';
 
 const Random = () => {
   const [state, setState] = useState(0);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (state === 0) {
       setState(Math.random() * 300);
     }
@@ -13,7 +13,7 @@ const Random = () => {
     <button
       className="effect-btn"
       onClick={() => setState(0)}
-      style={{ fontSize: "2.5em" }}
+      style={{ fontSize: '2.5em' }}
     >
       state: {state}
     </button>
