@@ -1,4 +1,5 @@
-import { createContext, useContext, useReducer } from "react";
+import { createContext, useContext, useReducer, useEffect } from 'react';
+import todoApi from '../api/todo';
 
 const TodoContext = createContext();
 const TodoDispatchContext = createContext();
@@ -6,30 +7,33 @@ const TodoDispatchContext = createContext();
 const todosList = [
   {
     id: 1,
-    content: "店予約する",
+    content: '店予約する',
     editing: false,
   },
   {
     id: 2,
-    content: "卵買う",
+    content: '卵買う',
     editing: false,
   },
   {
     id: 3,
-    content: "郵便出す",
+    content: '郵便出す',
     editing: false,
   },
 ];
 
 const todoReducer = (todos, action) => {
   switch (action.type) {
-    case "todo/add":
+    case 'todo/init':
+      console.log(action.type, todos);
+      return [...action.todos];
+    case 'todo/add':
       return [...todos, action.todo];
-    case "todo/delete":
+    case 'todo/delete':
       return todos.filter((todo) => {
         return todo.id !== action.todo.id;
       });
-    case "todo/update":
+    case 'todo/update':
       return todos.map((_todo) => {
         return _todo.id === action.todo.id
           ? { ..._todo, ...action.todo }
@@ -41,7 +45,14 @@ const todoReducer = (todos, action) => {
 };
 
 const TodoProvider = ({ children }) => {
-  const [todos, dispatch] = useReducer(todoReducer, todosList);
+  const [todos, dispatch] = useReducer(todoReducer, []);
+
+  useEffect(() => {
+    todoApi.getAll().then((todos) => {
+      console.log(todos);
+      dispatch({ todos, type: 'todo/init' });
+    });
+  }, []);
 
   return (
     <TodoContext.Provider value={todos}>
