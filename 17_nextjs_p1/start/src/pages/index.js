@@ -3,15 +3,13 @@ import Link from 'next/link';
 export default function Home() {
   return (
     <>
-      <div>HELLO NEXTJS</div>
-      <Link
-        href={{ pathname: '/07_router', query: { key: 'aaaa' } }}
-        as="/dummy"
-      >
+      <h1>Home</h1>
+      <Link href={{ pathname: '/07_router', query: { key: 'value' } }}>
         <a>/07_router</a>
       </Link>
-      <br />
-      <a href="/07_router">/07_router:画面の更新が発生する</a>
+      <Link href="/07_router/hello/setting">
+        <a>/07_router</a>
+      </Link>
     </>
   );
 }
