@@ -1,6 +1,10 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-}
+  reactStrictMode: false, //trueにするとconsole.logが2重で出力される
+  trailingSlash: true,
+  images: {
+    loader: 'custom',
+  },
+};
 
-module.exports = nextConfig
+module.exports = nextConfig;
