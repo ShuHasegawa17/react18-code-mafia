@@ -1,9 +1,9 @@
 export const hello = () => {
-  console.log("hello!");
+  console.log('hello!');
 };
 
 const funcB = () => {
-  console.log("funcB output");
+  console.log('funcB output');
 };
 
 export default funcB;
@@ -12,6 +12,9 @@ class User {
   constructor(name) {
     this.name = name;
   }
+  hello() {
+    console.log('hello' + this.name);
+  }
 }
 
-export { User }
+export { User };
